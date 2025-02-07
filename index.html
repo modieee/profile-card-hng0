@@ -27,13 +27,13 @@
 
         <h2 data-testid="jobTitle">Frontend Developer</h2>
 
-        <p class="short-bio" data-testid="shortBio">Frontend developer passionate about crafting responsive and user-friendly web interfaces using HTML, CSS, JavaScript, and React. Enthusiastic about prolem-solving and continous learning.</p>
+        <p class="short-bio" data-testid="shortBio">Frontend developer passionate about crafting responsive and user-friendly web interfaces using HTML, CSS, JavaScript, and React. Enthusiastic about problem-solving and continous learning.</p>
 
         <p class="location" data-testid="currentLocation">FCT-Abuja, Nigeria</p>
 
         <p class="email" data-testid="emailAddress"><a href="mailto: modadegospel@gmail.com">modadegospel@gmail.com</a></p>
 
-        <ul class="social-links">
+        <ul class="social-links" data-testid="socialLinks">
             <li><a href="https://github.com/modieee" data-testid="socialLinks" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             <li><a href="https://www.linkedin.com/in/modadeoluwa-adedamola-401277111/" data-testid="socialLinks" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
             <li><a href="https://x.com/iamdrealmo" data-testid="socialLinks" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -46,14 +46,19 @@
         </div>
 
         <script>
-            let currentTime = document.querySelector('[data-testid="currentTimeUTC"]')
-            
-            const setTime = new Date();
-            const setHour = setTime.getHours();
-            const setMinute = setTime.getMinutes();
-            const setSecond = setTime.getSeconds();
+            function updateTime() {
+                let currentTime = document.querySelector('[data-testid="currentTimeUTC"]')
 
-            currentTime.textContent = `${setHour} : ${setMinute}`
+                const setTime = new Date();
+                const setHour = String(setTime.getUTCHours()).padStart(2, "0");
+                const setMinute = String(setTime.getUTCMinutes()).padStart(2, "0");
+                const setSecond = String(setTime.getUTCSeconds()).padStart(2, "0");
+    
+                currentTime.textContent = `${setHour} : ${setMinute} : ${setSecond}`
+            }
+            updateTime();
+            setInterval(updateTime, 1000);
+            
         </script>
     </article>
 </body>
